@@ -23,11 +23,14 @@ Hokuyo ROS package (http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode
 servo_lidar _test package to run the main code (“https://github.com/adr288/Capstone-LIDAR-Project-GCC”)
 Setting up the software:
 To start:
+
 1)First we need to have open 3 terminal windows in ubuntu. (Ctrl + shift  + T adds a new terminal tab)
 
 2)In the first terminal enter " roscore" command (type “roscore” + press enter)
 
+
 3) 
+
    3.1) If running the ubuntu on a virtual machine, in terminal two first type “sudo chmod 777 /dev/ttyACM0”. Then enter the system password (Skip this section if not using virtual machine) If an error occurs, wait 10 seconds and unplug the lidar cable. Then plug it back in.
 
       3.2)After that, while still in the second terminal, enter “rosrun hokuyo_node hokuyo_node”. If a red error text appears, wait 5 minutes for the code to self troubleshoot. If the LIDAR doesn’t start scanning, press ctrl + c. and do this step again.
