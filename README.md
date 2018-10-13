@@ -8,9 +8,12 @@ NUC
 
 Connecting the hardware:
 
-1)Plug USB into the USB2Dynamixel and the NUC 
+1) Plug USB into the USB2Dynamixel and the NUC
+
 2) Plug the power cable into to the USB to Dynamixel adapter and an outlet 
+
 3) Plug LIDAR to USB cable into the LIDAR and the NUC
+
 4) Connect the 3 pin cable to the motor and the USB to Dynamixel adapter
 
 
