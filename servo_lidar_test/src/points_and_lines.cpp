@@ -1,12 +1,16 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
-#include <servo_lidar_test/controller.h>
+#include <servo_lidar_test/pointCloud.h>
 
-#include "std_msgs/String.h"
-#include "std_msgs/Float64.h"
-#include "sensor_msgs/LaserScan.h"
-#include <vector>
 #include <cmath>
+
+
+
+void get_pointCloud_coordinates(const servo_lidar_test::pointCloud::ConstPtr& msg)
+{
+ //std::cout<<"HI";
+ ROS_INFO("got packet:");
+}
 
 
 
@@ -16,24 +20,26 @@ int main( int argc, char** argv )
   ros::NodeHandle n;
   ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 10);
 
+  ros::Subscriber sub = n.subscribe("pointCloud", 1000, get_pointCloud_coordinates);
+
+
   ros::Rate r(30);
 
   float f = 0.0;
   while (ros::ok())
   {
 
-    visualization_msgs::Marker points, line_strip, line_list;
-    points.header.frame_id = line_strip.header.frame_id = line_list.header.frame_id = "/my_frame";
-    points.header.stamp = line_strip.header.stamp = line_list.header.stamp = ros::Time::now();
-    points.ns = line_strip.ns = line_list.ns = "points_and_lines";
-    points.action = line_strip.action = line_list.action = visualization_msgs::Marker::ADD;
-    points.pose.orientation.w = line_strip.pose.orientation.w = line_list.pose.orientation.w = 1.0;
+    visualization_msgs::Marker points;
+    points.header.frame_id = "/my_frame";
+    points.header.stamp = ros::Time::now();
+    points.ns = "points_and_lines";
+    points.action = visualization_msgs::Marker::ADD;
+    points.pose.orientation.w = 1.0;
 
 
 
     points.id = 0;
-    
-
+  
 
 
     points.type = visualization_msgs::Marker::POINTS;
@@ -46,11 +52,14 @@ int main( int argc, char** argv )
     points.scale.y = 0.2;
 
 
+
     // Points are green
     points.color.g = 1.0f;
     points.color.a = 1.0;
 
-    
+
+
+
     // Create the vertices for the points and lines
     for (uint32_t i = 0; i < 100; ++i)
     {
@@ -63,17 +72,17 @@ int main( int argc, char** argv )
       p.z = z;
 
       points.points.push_back(p);
-     
+      
 
       // The line list needs two points for each line
-      
+     
       p.z += 1.0;
-  
+      
     }
 
 
     marker_pub.publish(points);
-   
+    
 
     r.sleep();
 
