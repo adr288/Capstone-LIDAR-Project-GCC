@@ -6,31 +6,35 @@ USB2Dynamixel and the USB to Dynamixel adapter
 NUC
 
 
-Connecting the hardware:
+Setting up the hardware:
 
-1) Plug USB into the USB2Dynamixel and the NUC
+1) Plug in the USB port into the USB2Dynamixel and the NUC
 
-2) Plug the power cable into to the USB to Dynamixel adapter and an outlet 
+2) Plug in the power cable into to the USB to Dynamixel adapter and an outlet 
 
-3) Plug LIDAR to USB cable into the LIDAR and the NUC
+3) Plug the LIDAR to USB cable into the LIDAR and the NUC
 
-4) Connect the 3 pin cable to the motor and the USB to Dynamixel adapter
+4) Connect the 3 pin cable to the servo motor and the USB to Dynamixel adapter
 
 
 Required softwares to run this project:
+
 Ubuntu 14.04
+
 ROS indigo
-http://gcc-robotics.github.io/robot-motion-planning-labs/lab0-setting-up/ 
+
+Python 2.7
+
 ---------------------------------------------------------
 Hokuyo ROS package (http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode)
 --------------------------------------------------------
-servo_lidar _test package to run the main code (“https://github.com/adr288/Capstone-LIDAR-Project-GCC”)
+Use the servo_lidar_test package to run the main code (“https://github.com/adr288/Capstone-LIDAR-Project-GCC”)
 Setting up the software:
 To start:
 
-1)First we need to have open 3 terminal windows in ubuntu. (Ctrl + shift  + T adds a new terminal tab)
+1) First we need to have open 3 terminal windows in ubuntu. (Ctrl + shift  + T adds a new terminal tab)
 
-2)In the first terminal enter " roscore" command (type “roscore” + press enter)
+2) In the first terminal enter " roscore" command (type “roscore” + press enter)
 
 
 3) 
