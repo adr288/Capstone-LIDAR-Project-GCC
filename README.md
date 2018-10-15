@@ -29,7 +29,9 @@ Hokuyo ROS package
 (http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode)
 
 Use the servo_lidar_test package to run the main code (“https://github.com/adr288/Capstone-LIDAR-Project-GCC”)
+
 Setting up the software:
+
 To start:
 
 1) First we need to have open 3 terminal windows in ubuntu. (Ctrl + shift  + T adds a new terminal tab)
