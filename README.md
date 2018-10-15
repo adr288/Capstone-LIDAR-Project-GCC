@@ -25,9 +25,9 @@ ROS indigo
 
 Python 2.7
 
----------------------------------------------------------
-Hokuyo ROS package (http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode)
---------------------------------------------------------
+Hokuyo ROS package
+(http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode)
+
 Use the servo_lidar_test package to run the main code (“https://github.com/adr288/Capstone-LIDAR-Project-GCC”)
 Setting up the software:
 To start:
