@@ -41,7 +41,7 @@ To start:
 
 3) 
 
-   3.1) If running the ubuntu on a virtual machine, in terminal two first type “sudo chmod 777 /dev/ttyACM0”. Then enter the system password (Skip this section if not using virtual machine) If an error occurs, wait 10 seconds and unplug the lidar cable. Then plug it back in.
+   3.1) If running the ubuntu on a virtual machine, in terminal two first type `sudo chmod 777 /dev/ttyACM0`. Then enter the system password (Skip this section if not using virtual machine) If an error occurs, wait 10 seconds and unplug the lidar cable. Then plug it back in.
 
    3.2)After that, while still in the second terminal, enter “rosrun hokuyo_node hokuyo_node”. If a red error text appears, wait 5 minutes for the code to self troubleshoot. If the LIDAR doesn’t start scanning, press ctrl + c. and do this step again.
 
