@@ -34,9 +34,9 @@ Setting up the software:
 
 To start:
 
-1) First we need to have open 3 terminal windows in ubuntu. (Ctrl + shift  + T adds a new terminal tab)
+1) First we need to have open 3 terminal windows in ubuntu. ('Ctrl + shift  + T' adds a new terminal tab)
 
-2) In the first terminal enter " roscore" command (type “roscore” + press enter)
+2) In the first terminal enter 'roscore' command (type "roscore" + press "enter")
 
 
 3) 
