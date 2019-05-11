@@ -43,10 +43,10 @@ To start:
 
    3.1) If running the ubuntu on a virtual machine, in terminal two first type `sudo chmod 777 /dev/ttyACM0`. Then enter the system password (Skip this section if not using virtual machine) If an error occurs, wait 10 seconds and unplug the lidar cable. Then plug it back in.
 
-   3.2)After that, while still in the second terminal, enter “rosrun hokuyo_node hokuyo_node”. If a red error text appears, wait 5 minutes for the code to self troubleshoot. If the LIDAR doesn’t start scanning, press ctrl + c. and do this step again.
+   3.2)After that, while still in the second terminal, enter `rosrun hokuyo_node hokuyo_node`. If a red error text appears, wait 5 minutes for the code to self troubleshoot. If the LIDAR doesn’t start scanning, press `ctrl + c`. and do this step again.
 
-4) In terminal three, enter “roslaunch servo_lidar_test servo_lidar_test.launch” then press Enter, it should start working/scanning. If we want to save the scanned image, we can do that in rviz by pressing File→ Save Image
-To stop running, terminate terminal 3 (ctrl + c) ,
+4) In terminal three, enter `roslaunch servo_lidar_test servo_lidar_test.launch` then press `Enter`, it should start working/scanning. If we want to save the scanned image, we can do that in rviz by pressing File→ Save Image
+To stop running, terminate terminal 3 (`ctrl + c`) ,
 If we want it to run again, do step 4.
 Once finished for the day, terminate the lidar, then
  terminate roscore and close all the terminals.
