@@ -2,20 +2,16 @@
 import rospy
 import math
 import sys
-import struct
 
 from visualization_msgs.msg import Marker
 from visualization_msgs.msg import MarkerArray
 
 from _collections import deque, defaultdict
 
-from sensor_msgs import point_cloud2
-from sensor_msgs.msg import PointCloud2, PointField
-from std_msgs.msg import Header
+from sensor_msgs.msg import PointCloud2
 import std_msgs.msg
 import sensor_msgs.point_cloud2 as pcl2
 from servo_lidar_test.msg import pointCloud
-import sensor_msgs.point_cloud2 as pc2
 
 
 x = []
@@ -34,16 +30,13 @@ def get_pointCloud_coordinates(msg):
     y = msg.y[:]
     z = msg.z[:]
     #coordinatesArray = msg.pointCloudCoordinates[:]
-
-
-
     
 
 
 if __name__ == '__main__':
 
-    pointCloude_publish_rate = 40
-    number_of_data_poins = 80000 # Number of data points to be published
+    pointCloude_publish_rate = 30
+    number_of_data_poins = 30000 # Number of data points to be published
 
 
     rospy.init_node('pointCloud2_test')
@@ -79,8 +72,17 @@ if __name__ == '__main__':
     count = 0
     cloud_points = []
     coordinatesArray = []
-    points = []
-  
+    marker = Marker()
+    marker.type = marker.SPHERE
+    marker.action = marker.ADD
+    marker.scale.x = 0.2
+    marker.scale.y = 0.2
+    marker.scale.z = 0.2
+    marker.color.a = 1.0
+    marker.color.r = 1.0
+    marker.color.g = 1.0
+    marker.color.b = 0.0
+    marker.pose.orientation.w = 1.0
     
 
 
@@ -109,35 +111,16 @@ if __name__ == '__main__':
         for i in range(len(x)):
 
             if(x[i] != 0 or y[i]!=0 or z[i]!=0):
-                #cloud_points.append(x[i], y[i], z[i],0) #For When the colors are not included
-                pt = [x[i],y[i],z[i],0]
-                r = int(200)
-                g = int(0)
-                b = int(0)
-                a = 255
-                #print r, g, b, a
-                rgb = struct.unpack('I', struct.pack('BBBB', b, g, r, a))[0]
-                #print hex(rgb)
-                pt[3] = rgb
-                points.append(pt)
+                cloud_points.append([x[i], y[i], z[i]])
 
-
-            if (len(points) > number_of_data_poins):
+            if (len(cloud_points) > number_of_data_poins):
                 #del(cloud_points[0])
-                points.pop(0)
-        
-        fields = [PointField('x', 0, PointField.FLOAT32, 1),
-          PointField('y', 4, PointField.FLOAT32, 1),
-          PointField('z', 8, PointField.FLOAT32, 1),
-          PointField('rgb', 12, PointField.UINT32, 1),
-          # PointField('rgba', 12, PointField.UINT32, 1),
-          ]
+                cloud_points.pop(0)
 
-        #scaled_polygon_pcl = pcl2.create_cloud_xyz32(header, cloud_points) #For When the colors are not included
-        scaled_polygon_pcl = point_cloud2.create_cloud(header, fields, points)
+        scaled_polygon_pcl = pcl2.create_cloud_xyz32(header, cloud_points)
         pcl_pub.publish(scaled_polygon_pcl)
 
-        rate.sleep()
+     rate.sleep()
 
     rospy.spin()
 

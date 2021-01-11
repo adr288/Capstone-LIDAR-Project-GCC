@@ -20,6 +20,7 @@ lidarAngleOffset = math.pi / 2.0 # Offseting lidar rays' angles by 90 degrees
 servoAngle = 0
 servoOffset = 0.3316 # Offseting servo
 start_scan = 1
+arrayOfServoAngles = []
 
 
 
@@ -40,9 +41,13 @@ def get_lidar_data(msg):
 def get_servo_data(msg):
     global servoAngle
     global servoTime
+    global arrayOfServoAngles
+
     servoTime = msg.header
     servoAngle = msg.servoAngle + servoOffset
-    print(servoTime)
+    arrayOfServoAngles = msg.arrayOfServoAngles[:]
+
+    #print(servoTime)
      
 # server callback funtion (To be developed)
 def handle_start(req):
@@ -55,7 +60,7 @@ def main():
 
     rospy.init_node('controller_test')  #Node name in ROS
     s = rospy.Service('controller_service_name', controller_client, handle_start) # Service setup (to be developed)
-    controller_publish_rate = 10 #  contrller node Publish Rate Hz
+    controller_publish_rate = 40 #  contrller node Publish Rate Hz
    
     #t = input('hi, should I start Scanning?') #input from user node(to be developed)
     print("Starting the controller node.....")
@@ -66,7 +71,7 @@ def main():
     z = []
 
     #Max and Min range to be pubblished by the controller node
-    RangeMax = 6     
+    RangeMax = 2 
     RangeMin = 0.1
 
 
@@ -85,7 +90,7 @@ def main():
     rospy.Subscriber("servo_cmd", servo, get_servo_data)
     
     
-    rospy.sleep(1.)
+    rospy.sleep(2.)
     rate = rospy.Rate(controller_publish_rate) 
     print("controller node started!")
     
@@ -109,10 +114,10 @@ def main():
 
         for r in myRanges:
 
-            rayAngle = startAngle + index * angleOfIncrement + lidarAngleOffset
-            incrementedServoAngle = servoAngle + index * 0.000117 # interpolating the servo angle 
+            rayAngle = startAngle + index * angleOfIncrement + lidarAngleOffset 
+            #incrementedServoAngle = servoAngle + index * 0.000117 # interpolating the servo angle 
 
-            index = index + 1
+            
             
              
             if(r > RangeMax or r < RangeMin):     #If the lidar range is out of desired range assign zero to it
@@ -125,10 +130,21 @@ def main():
             # z.append (r * math.sin(servoAngle) * math.sin(rayAngle))
             # x.append(r * math.cos(rayAngle))
 
-            y.append(r * math.cos(incrementedServoAngle) * math.sin(rayAngle))
-            z.append (r * math.sin(incrementedServoAngle) * math.sin(rayAngle))
-            x.append(r * math.cos(rayAngle))
+            #y.append(r * math.cos(incrementedServoAngle) * math.sin(rayAngle))
+            #z.append (r * math.sin(incrementedServoAngle) * math.sin(rayAngle))
+            #x.append(r * math.cos(rayAngle))
             #--------------------------------------------------------------
+            
+            #-------------------Using Servo Array--------------------------
+            #rospy.loginfo(arrayOfServoAngles[index])
+            x.append(r * math.cos(arrayOfServoAngles[index]) * math.sin(rayAngle)) #
+            y.append (r * math.sin(arrayOfServoAngles[index]) * math.sin(rayAngle))
+            z.append(r * math.cos(rayAngle))
+            index = index + 1
+            #rospy.loginfo(index)
+            #rospy.loginfo(len(myRanges))
+            
+
 
         msg.x = x[:]
         msg.y = y[:]
@@ -140,6 +156,7 @@ def main():
         del y[:]
         del z[:]
 
+        
 
     
         rate.sleep()
