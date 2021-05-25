@@ -1,8 +1,8 @@
 Hardware models used:
 
-Hokuyo URG-04LX-UG01 
-Dynamixel MX-28 Servo Motor
-USB2Dynamixel and the USB to Dynamixel adapter
+Hokuyo URG-04LX-UG01 \
+Dynamixel MX-28 Servo Motor\
+USB2Dynamixel and the USB to Dynamixel adapter\
 NUC
 
 
