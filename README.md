@@ -9,15 +9,12 @@ Required softwares to run this project:\
 Ubuntu 14.04\
 ROS indigo\
 Python 2.7\
-Setting up the hardware:
 
-1) Plug in the USB port into the USB2Dynamixel and the NUC
-
-2) Plug in the power cable into to the USB to Dynamixel adapter and an outlet 
-
-3) Plug the LIDAR to USB cable into the LIDAR and the NUC
-
-4) Connect the 3 pin cable to the servo motor and the USB to Dynamixel adapter
+Setting up the hardware:\
+1) Plug in the USB port into the USB2Dynamixel and the NUC\
+2) Plug in the power cable into to the USB to Dynamixel adapter and an outlet \
+3) Plug the LIDAR to USB cable into the LIDAR and the NUC\
+4) Connect the 3 pin cable to the servo motor and the USB to Dynamixel adapter\
 
 
 
