@@ -8,6 +8,7 @@ NUC
 Required softwares to run this project:\
 Ubuntu 14.04\
 ROS indigo\
+Hokuyo ROS package\
 Python 2.7\
 
 Setting up the hardware:
@@ -17,9 +18,9 @@ Setting up the hardware:
 4) Connect the 3 pin cable to the servo motor and the USB to Dynamixel adapter
 
 
+Setting up the software:
 
-
-Hokuyo ROS package
+install the Hokuyo ROS package
 (http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode)
 
 Use the servo_lidar_test package to run the main code (“https://github.com/adr288/Capstone-LIDAR-Project-GCC”)
