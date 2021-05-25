@@ -5,7 +5,10 @@ Dynamixel MX-28 Servo Motor\
 USB2Dynamixel and the USB to Dynamixel adapter\
 NUC
 
-
+Required softwares to run this project:\
+Ubuntu 14.04\
+ROS indigo\
+Python 2.7\
 Setting up the hardware:
 
 1) Plug in the USB port into the USB2Dynamixel and the NUC
@@ -17,13 +20,7 @@ Setting up the hardware:
 4) Connect the 3 pin cable to the servo motor and the USB to Dynamixel adapter
 
 
-Required softwares to run this project:
 
-Ubuntu 14.04
-
-ROS indigo
-
-Python 2.7
 
 Hokuyo ROS package
 (http://wiki.ros.org/hokuyo_node/Tutorials/UsingTheHokuyoNode)
